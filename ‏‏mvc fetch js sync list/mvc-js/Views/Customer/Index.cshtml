@@ -1,0 +1,63 @@
+﻿@model List<Customer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch_javascript</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/fetch_javascript.styles.css" asp-append-version="true" />*@
+</head>
+<body>
+
+    <div class="container">
+
+         <div class="row">
+            <div class="col-md-12 my-3">
+                <a class="btn btn-primary w-100" id="btnGetAllCustomers" asp-action="Index">Get Data</a>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <form id="AddForm" class="w-100 d-flex flex-row" method="post" asp-action="Add">
+                    <div class="row">
+                        <div class="col">
+                    <input id="Fname" name="Fname" class="form-control" placeholder="First Name" />
+                        </div>
+                        <div class="col">
+                    <input id="Lname" name="Lname" class="form-control" placeholder="Last Name" />
+                        </div>
+                        <div class="col">
+                    <button id="btnAddNewCustomer" class="btn btn-primary flex-shrink-0 ms-2" type="submit">Add Customer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+        <div class="row">
+            <div id="LoadingSpinner"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-group" id="main-list">
+                    @foreach (var item in Model)
+                    {
+                        <li class="list-group-item">@item.Fname @item.Lname </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>
